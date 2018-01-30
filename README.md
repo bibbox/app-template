@@ -6,7 +6,7 @@
 
 
 ## Docker Images Used
- * [BIBBOX/limesurvey](https://hub.docker.com/r/bibbox/limesurvey) 
+ * [BIBBOX/imagename](https://hub.docker.com/r/bibbox/imagename) 
  * [mySQL](https://hub.docker.com/_/mysql/), offical mySQL container
  * [busybox](https://hub.docker.com/_/busybox/), offical data container
  

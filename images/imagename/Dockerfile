@@ -1,5 +1,5 @@
-# limesurvey installation
-# 
+# Some Dpocker installation
+# Here you see a limesurves Docker as an example
 # VERSION 1.0
 #
 
