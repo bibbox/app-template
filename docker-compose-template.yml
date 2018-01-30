@@ -6,23 +6,36 @@ networks:
 
 services:
 
-  §§INSTANCE-limesurvey:
-    image: bibbox/limesurvey
-    container_name:  §§INSTANCE-limesurvey
+  §§INSTANCE-container1:
+    image: bibbox/app-image
+    container_name:  §§INSTANCE-container1
     restart: unless-stopped
     networks:
       - bibbox-default-network
     links:
-      - §§INSTANCE-limesurvey-db:limesurvey-db
+      - §§INSTANCE-lapp-db:app-db
     ports:
-      - "§§PORT:80"
+      - "§§PORT1:80"
     depends_on:
-      - §§INSTANCE-limesurvey-db
-      - §§INSTANCE-limesurvey-data
+      - §§INSTANCE-app-db
+      - §§INSTANCE-app-data
     volumes_from: 
-      - §§INSTANCE-limesurvey-data
+      - §§INSTANCE-app-data
 
-  §§INSTANCE-limesurvey-db:
+§§INSTANCE-container2:
+  image: bibbox/app-image2
+  container_name:  §§INSTANCE-container2
+  restart: unless-stopped
+  networks:
+    - bibbox-default-network
+  ports:
+    - "§§PORT2:8000"
+  depends_on:
+    - §§INSTANCE-app-data
+  volumes_from: 
+    - §§INSTANCE-app-data
+
+  §§INSTANCE-app-db:
     image: mysql:8
     container_name: §§INSTANCE-limesurvey-db
     restart: unless-stopped
@@ -30,19 +43,18 @@ services:
       - bibbox-default-network
     user: root
     environment:
-      - MYSQL_ROOT_PASSWORD=thispasswordisneverusedeveninsidethecontainer
-      - MYSQL_DATABASE=limesurvey
-      - MYSQL_USER=limesurvey
-      - MYSQL_PASSWORD=limesurvey4bibbox
+      - MYSQL_ROOT_PASSWORD=thispasswordisneverusededoutsidethecontainer
+      - MYSQL_DATABASE=§§MYSQL_DATABASE_NAME
+      - MYSQL_USER=§§MYSQL_DATABASE_USER
+      - MYSQL_PASSWORD=§§MYSQL_DATABASE_PASSWORD
     volumes_from: 
-      - §§INSTANCE-limesurvey-data
+      - §§INSTANCE-app-data
     depends_on:
-      - §§INSTANCE-limesurvey-data
+      - §§INSTANCE-app-data
 
-  §§INSTANCE-limesurvey-data:
+  §§INSTANCE-app-data:
     image: busybox
-    container_name: §§INSTANCE-limesurvey-data
+    container_name: §§INSTANCE-app-data
     volumes:
-      - ./var/lib/mysql:/var/lib/mysql
-      - ./var/www/limesurvey/uploads:/var/www/limesurvey/uploads
-
+      - ./var/app-data:/var/app-data
+      - ./var/app-config:/var/app-config
