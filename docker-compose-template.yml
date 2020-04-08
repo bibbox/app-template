@@ -56,5 +56,5 @@ services:
     image: busybox
     container_name: §§INSTANCE-app-data
     volumes:
-      - ./var/app-data:/var/app-data
-      - ./var/app-config:/var/app-config
+      - ./data/app-data:/var/app-data
+      - ./data/app-config:/var/app-config
