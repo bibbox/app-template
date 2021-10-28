@@ -1,0 +1,53 @@
+    version: '3'
+
+    networks:
+        bibbox-default-network:
+          external: true
+
+    services:
+
+      bibbox-container-frontend:
+        image: bibbox/app-image:vx.y.z
+        container_name:  bibbox-container-frontend
+        restart: unless-stopped
+        networks:
+          - bibbox-default-network
+        links:
+          - bibbox-container2:container2
+        ports:
+          - "80:80"
+        depends_on:
+          - bibbox-container2
+        volumes: 
+          - ./data/container/app-data:/app-data
+        
+    bibbox-container2:
+      image: bibbox/app-image2:va.b.c
+      container_name:  bibbox-container2
+      restart: unless-stopped
+      networks:
+        - bibbox-default-network
+      links:
+          - bibbox-app-db:app-db
+      ports:
+        - "8000:8000"
+      depends_on:
+          - bibbox-app-db
+      volumes: 
+        - ./data/container/app-data:/app-data
+
+      bibbox-app-db:
+        image: mysql:8
+        container_name: bibbox-limesurvey-db
+        restart: unless-stopped
+        networks:
+          - bibbox-default-network
+        user: root
+        environment:
+          - MYSQL_ROOT_PASSWORD=thispasswordisneverusededoutsidethecontainer
+          - MYSQL_DATABASE=§§MYSQL_DATABASE_NAME
+          - MYSQL_USER=§§MYSQL_DATABASE_USER
+          - MYSQL_PASSWORD=§§MYSQL_DATABASE_PASSWORD
+        volumes: 
+          - ./data/db/var/app-data:/var/app-data
+

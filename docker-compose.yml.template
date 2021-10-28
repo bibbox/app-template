@@ -1,0 +1,58 @@
+    version: '3'
+
+    networks:
+        bibbox-default-network:
+          external: true
+
+    services:
+
+      §§INSTANCE-container-frontend:
+        image: bibbox/app-image:vx.y.z
+        container_name:  §§INSTANCE-container-frontend
+        restart: unless-stopped
+        networks:
+          - bibbox-default-network
+        links:
+          - §§INSTANCE-container2:container2
+        ports:
+          - "80:80"
+        depends_on:
+          - §§INSTANCE-container2
+        volumes: 
+          - ./data/container/app-data:/app-data
+        proxy:
+          TYPE: PRIMARY
+          URLPREFIX: §§INSTANCE
+          TEMPLATE: default
+          DISPLAYNAME: 'APP name'  
+
+    §§INSTANCE-container2:
+      image: bibbox/app-image2:va.b.c
+      container_name:  §§INSTANCE-container2
+      restart: unless-stopped
+      networks:
+        - bibbox-default-network
+      links:
+          - §§INSTANCE-app-db:app-db
+      ports:
+        - "8000:8000"
+      depends_on:
+          - §§INSTANCE-app-db
+      volumes: 
+        - ./data/container/app-data:/app-data
+
+      §§INSTANCE-app-db:
+        image: mysql:8
+        container_name: §§INSTANCE-app-db
+        restart: unless-stopped
+        networks:
+          - bibbox-default-network
+        user: root
+        environment:
+          - MYSQL_ROOT_PASSWORD=thispasswordisneverusededoutsidethecontainer
+          - MYSQL_DATABASE=§§MYSQL_DATABASE_NAME
+          - MYSQL_USER=§§MYSQL_DATABASE_USER
+          - MYSQL_PASSWORD=§§MYSQL_DATABASE_PASSWORD
+        volumes: 
+          - ./data/db/var/app-data:/var/app-data
+

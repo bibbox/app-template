@@ -2,8 +2,11 @@
 
 ## Install Parameters
 
+List of environment parameters set during installation
 
-![FINAL](install-screen-01.png)
+* ENV_PARAM1: ...
+* ENV_PARAM1: ...
+
 
 ## Populate the Database
 
@@ -21,4 +24,4 @@ Please change the password.
 
 Have a nice ride with the new Admins youngtimer.
 
-![FINAL](install-screen-final.jpg)
+![FINAL](assets/install-screen-final.jpg)

@@ -1,4 +1,0 @@
-{
-  runningcontainers:["§§INSTANCE-appcontainer1", "§§INSTANCE-appcontainer2"],
-  supportcontainers:["§§INSTANCE-app-data"]    
-}
