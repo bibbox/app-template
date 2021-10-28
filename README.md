@@ -7,7 +7,7 @@ After the installation follow these [instructions](INSTALL-APP.md)
 ## Hints
 
 * approx. time with medium fast internet connection: **5 minutes**
-* initial user/passwordd: **admin / admin**
+* initial user/password: e.g. **admin / admin**
 
 ## Install within BIBBOX
 
