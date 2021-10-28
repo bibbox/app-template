@@ -17,13 +17,17 @@ Within BIBBOX you can use the [BIBBOX](https://bibbox.readthedocs.io/en/latest/ 
 
 List of environment parameters set during installation
 
- * ENV_PARAM1: ...
- * ENV_PARAM1: ...
+ * NAME_AS_IN_DOCKER_TEMPLATE_1: ...
+ * MYSQL_DATABASE_NAME: ...
+ * MYSQL_DATABASE_USER: ...
+ * MYSQL_DATABASE_PASSWORD: ...
 
 The default values for the standalone installation are:
 
- * ENV_PARAM1: default
- * ENV_PARAM1: default
+ * NAME_AS_IN_DOCKER_TEMPLATE_1: Default Value
+ * MYSQL_DATABASE_NAME: Default Value
+ * MYSQL_DATABASE_USER: Default Value
+ * MYSQL_DATABASE_PASSWORD: Default Value
 
 
 ## Docker Images Used
