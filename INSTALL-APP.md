@@ -2,8 +2,12 @@
 
 ## Install Parameters
 
+List of environment parameters set during installation
 
-![FINAL](install-screen-01.png)
+* NAME_AS_IN_DOCKER_TEMPLATE_1: ...
+* MYSQL_DATABASE_NAME: ...
+* MYSQL_DATABASE_USER: ...
+* MYSQL_DATABASE_PASSWORD: ...
 
 ## Populate the Database
 
@@ -21,4 +25,4 @@ Please change the password.
 
 Have a nice ride with the new Admins youngtimer.
 
-![FINAL](install-screen-final.jpg)
+![FINAL](assets/install-screen-final.jpg)
